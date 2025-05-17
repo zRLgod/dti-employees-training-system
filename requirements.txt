@@ -1,0 +1,11 @@
+<<<<<<< HEAD
+Django>=5.1.7
+djangorestframework>=3.15.2
+djangorestframework-simplejwt>=5.5.0
+django-cors-headers>=4.7.0
+=======
+Django>=5.1.7
+djangorestframework>=3.15.2
+djangorestframework-simplejwt>=5.5.0
+django-cors-headers>=4.7.0
+>>>>>>> 88abb30aca84da2da5c75cd8d5ef20c44b6b5c47

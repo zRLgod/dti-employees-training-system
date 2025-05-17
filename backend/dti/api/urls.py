@@ -1,0 +1,42 @@
+from django.urls import path
+from .views import *
+from .views import LearningActionPlanCreateView
+
+urlpatterns = [
+    path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', CustomRefreshTokenView.as_view(), name='token_refresh'),
+    path('logout/', logout, name='logout'),
+    path('authenticated/', is_authenticated, name='is_authenticated'),
+    path('register/', register, name='register'),
+    path('users/', list_users, name='list_users'),
+    path('userprofile/', user_profile, name='userprofile'),
+    path('user/create/', PostUser.as_view()),
+    path('user/update/<int:pk>/', UpdateUser, name='UpdateUser'),
+    path('user/delete/<int:pk>', DeleteUser, name='DeleteUser'),
+    path('training/', ViewTraining.as_view(), name='view-trainings'),
+    path('training/create/', PostTraining.as_view()),
+    path('training/update/<int:pk>', UpdateTraining, name='UpdateTraining'),
+    path('training/delete/<int:pk>', DeleteTraining, name='DeleteTraining'),
+    path('training/assign/', PostATTraining.as_view()),
+    path('training/assigned/remove/<int:pk>', DeleteATTraining, name='DeleteATTraining'),
+    path('training/view/assigned', ViewATTraining.as_view()),
+    path('competency/', ViewCompetency.as_view()),
+    path('competency/<int:pk>', ViewCompetencyDetail.as_view()),
+    path('competency/create/', PostCompetency.as_view()),
+    path('competency/delete/<int:pk>', DeleteCompetency, name='DeleteCompetency'),
+    path('employees/', EmployeeListView.as_view(), name='employee-list'),
+    path('training/<int:training_id>/assigned-users/', get_assigned_users, name='get_assigned_users'),
+    path('training/assigned/current-user/', ViewAssignedTrainingsForUser.as_view(), name='view-assigned-trainings-for-user'),
+    path('enrolledtrainings/', PostEnrolledTraining.as_view()),
+    path('enrolledtrainings/current-user/', ViewEnrolledTrainingsForUser.as_view()),
+    path('enrolledtrainings/<int:training_id>/users/', get_enrolled_users),
+    path('learning_action_plans/create/', LearningActionPlanCreateView.as_view(), name='create_learning_action_plan'),
+    path('learning_action_plans/user/', ListUserLearningActionPlans.as_view(), name='list_user_learning_action_plans'),
+    path('learning_action_plans/all/', ListAllLearningActionPlans.as_view(), name='list_all_learning_action_plans'),
+    path('progress/lap/<int:lap_id>/', get_progress_by_lap, name='get_progress_by_lap'),
+    path('progress/', PostProgress.as_view(), name='create_progress'),
+    path('progress/current-user/', ViewProgressForCurrentUser.as_view(), name='view_progress_for_current_user'),
+    path('progress/all/', ViewProgress.as_view(), name='view_progress_all'),
+    path('progress/update/<int:pk>/', UpdateProgress.as_view(), name='update_progress'),
+]
+ 
